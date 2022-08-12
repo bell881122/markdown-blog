@@ -30,3 +30,22 @@ export function getMdFile(filePath: string) {
   file.data.coverImage = file.data.coverImage || defaultImage;
   return file;
 }
+
+export function getMdFileData(pathArr: string[]) {
+  if (!pathArr[pathArr.length - 1].endsWith(".md"))
+    return null;
+
+  const filePath = `posts/${pathArr.join("/")}`;
+  const { data } = getMdFile(filePath);
+
+  if (data.draft || !data.title)
+    return null;
+
+  const lastModifiedDate = fs.statSync(filePath).mtime;
+  const lastModified = `${lastModifiedDate.getFullYear()}-${(lastModifiedDate.getMonth() + 1).toString().padStart(2, '0')}-${lastModifiedDate.getDate().toString().padStart(2, '0')}`;
+  return {
+    slug: pathArr,
+    data,
+    lastModified,
+  }
+}

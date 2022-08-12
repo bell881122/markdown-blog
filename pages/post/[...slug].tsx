@@ -7,16 +7,21 @@ interface IParams extends ParsedUrlQuery {
   slug: string[]
 }
 
-type postData = {
-  slug: string[],
-  data?: {
+export type postData = {
+  slug: string[];
+  data: {
     title: string;
     date: string;
     tags: string;
     coverImage: string;
     draft: boolean;
-  },
-  content?: string,
+  };
+  content?: string;
+  lastModified?: string;
+}
+
+export type postDataArr = {
+  posts: postData[];
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

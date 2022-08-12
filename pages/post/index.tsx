@@ -1,30 +1,21 @@
 import type { NextPage } from 'next'
-import Link from 'next/link';
-import React from 'react';
-import { recurseAllPaths } from 'utils/utils';
-
-type Props = {
-  posts: string[][];
-}
+import { recurseAllPaths, getMdFileData } from 'utils/utils';
+import { postDataArr } from 'pages/post/[...slug]';
+import PostCard from 'components/postCard';
 
 export async function getStaticProps() {
-  const posts = recurseAllPaths("posts")
-    .map(x => x.params.slug)
-  return { props: { posts } };
+  const paths = recurseAllPaths("posts").map(x => x.params.slug);
+  const posts = paths.map(pathArr => getMdFileData(pathArr)).filter(post => post)
+  return {
+    props: {
+      posts
+    }
+  };
 }
 
-const Index: NextPage<Props> = ({ posts }) => {
+const Index: NextPage<postDataArr> = ({ posts }) => {
   return (
-    <>
-      {posts.map(item => {
-        const url = `post/${item.join("/")}`;
-        return (
-          <Link key={url} href={url}>
-            <p>{url}</p>
-          </Link>
-        )
-      })}
-    </>
+    <PostCard postDataArr={posts} />
   )
 }
 
