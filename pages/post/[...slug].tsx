@@ -1,6 +1,7 @@
+import md from 'markdown-it';
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { recurseAllPaths,getMdFile } from 'utils/utils';
+import { recurseAllPaths, getMdFile } from 'utils/utils';
 
 interface IParams extends ParsedUrlQuery {
   slug: string[]
@@ -36,6 +37,7 @@ export const getStaticProps: GetStaticProps = (context) => {
       props: { slug, data, content }
     }
   }
+  
   return {
     props: { slug }
   }
@@ -44,9 +46,20 @@ export const getStaticProps: GetStaticProps = (context) => {
 export default function PostPage({ slug, data, content }: postData) {
   return !data ? <>{slug.join("/")}</> : (
     <>
-      <p>{slug.join("/")}</p>
-      <p>{data.title}</p>
-      <p>{data.date}</p>
+      <div
+        className='w-full h-[400px]'
+        style={{
+          background: `url(${data.coverImage}) center center`,
+          backgroundSize: 'cover'
+        }}
+      />
+      <div className="max-w-[1000px] mx-auto">
+        <div className='prose py-10 px-8 max-w-full shadow-2xl'>
+          <h1 className='text-[32px] mb-1 leading-9'>{data.title}</h1>
+          <small className='block mb-4 text-gray-400'>{data.date}</small>
+          <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
+        </div>
+      </div>
     </>
   );
 }

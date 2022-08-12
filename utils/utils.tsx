@@ -1,5 +1,6 @@
 import fs from 'fs';
 import matter from 'gray-matter';
+import { defaultImage } from 'config/config';
 
 type pathsArr = {
   params: {
@@ -26,5 +27,6 @@ export function getFilePath(path: string, file: fs.Dirent) {
 
 export function getMdFile(filePath: string) {
   const file = matter(fs.readFileSync(filePath, 'utf-8'));
+  file.data.coverImage = file.data.coverImage || defaultImage;
   return file;
 }
