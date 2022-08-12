@@ -1,6 +1,7 @@
 import fs from 'fs';
+import matter from 'gray-matter';
 
-export type pathsArr = {
+type pathsArr = {
   params: {
     slug: string[];
   };
@@ -21,4 +22,9 @@ export function recurseAllPaths(path: string): pathsArr {
 export function getFilePath(path: string, file: fs.Dirent) {
   const filepathArr = `${path}/${file.name}`.replace("posts/", "").split("/")
   return { params: { slug: [...filepathArr] } }
+}
+
+export function getMdFile(filePath: string) {
+  const file = matter(fs.readFileSync(filePath, 'utf-8'));
+  return file;
 }
