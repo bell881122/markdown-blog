@@ -1,0 +1,1 @@
+export const contextList = ['JavaScript', 'CSS', 'Web', 'Develop'];

@@ -1,0 +1,48 @@
+.menuIcon {
+  height: 100%;
+  position: relative;
+  opacity: 0.6;
+
+  &:before,
+  &:after {
+    position: absolute;
+    width: 100%;
+    content: ' ';
+    border-top: 1.5px solid rgb(107, 114, 128);
+  }
+
+  &:before {
+    top: 0;
+    height: 49%;
+  }
+
+  &:after {
+    bottom: 0;
+    height: 51%;
+    border-bottom: 1.5px solid rgb(107, 114, 128);
+  }
+}
+
+.closeIcon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.5;
+  margin: -2px 0 0 12px;
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: ' ';
+    height: 24px;
+    width: 2px;
+    background-color: rgb(107, 114, 128);
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
