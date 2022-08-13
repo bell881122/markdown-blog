@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { getRecurseMdFileData } from 'utils/utils';
 import { postDataArr } from 'pages/post/[...slug]';
-import PostCard from 'components/postCard';
+import PostCard from 'components/PostCard';
 
 export async function getStaticProps() {
   const posts = getRecurseMdFileData("posts")

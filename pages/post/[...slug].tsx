@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring'
 import { recurseAllPaths, getMdFile, getRecurseMdFileData, checkIsMd, checkIsNotDraft } from 'utils/utils';
-import PostCard from 'components/postCard';
+import PostCard from 'components/PostCard';
 
 interface IParams extends ParsedUrlQuery {
   slug: string[]
@@ -101,5 +101,5 @@ export default function PostPage(post: postData | postDataArr) {
         </ul>
       </div>
     </div>
-  </> : <PostCard postDataArr={(post as postDataArr).posts} isRoot={true} />
+  </> : <PostCard postDataArr={(post as postDataArr).posts} />
 }
