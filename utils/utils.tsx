@@ -11,7 +11,7 @@ type pathsArr = {
 export function recurseAllPaths(path: string): pathsArr {
   const files = fs.readdirSync(path, { withFileTypes: true });
   return files.flatMap(file => {
-    if (file.name.endsWith(".md")) {
+    if (checkIsMd(file.name)) {
       return getFilePath(path, file)
     } else {
       const currentPath = getFilePath(path, file)
@@ -32,7 +32,7 @@ export function getMdFile(filePath: string) {
 }
 
 export function getMdFileData(pathArr: string[]) {
-  if (!pathArr[pathArr.length - 1].endsWith(".md"))
+  if (!checkIsMd(pathArr[pathArr.length - 1]))
     return null;
 
   const filePath = `posts/${pathArr.join("/")}`;
@@ -54,4 +54,13 @@ export function getRecurseMdFileData(rootPath: string) {
   return recurseAllPaths(rootPath)
     .map(x => getMdFileData(x.params.slug))
     .filter(post => post);
+}
+
+export function checkIsMd(str: string) {
+  return str.endsWith(".md")
+}
+
+export function checkIsNotDraft(mdPath: string) {
+  const { data: { draft, title } } = getMdFile(mdPath);
+  return (!draft && title)
 }
