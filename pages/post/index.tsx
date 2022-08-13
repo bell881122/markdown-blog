@@ -1,11 +1,10 @@
 import type { NextPage } from 'next'
-import { recurseAllPaths, getMdFileData } from 'utils/utils';
+import { getRecurseMdFileData } from 'utils/utils';
 import { postDataArr } from 'pages/post/[...slug]';
 import PostCard from 'components/postCard';
 
 export async function getStaticProps() {
-  const paths = recurseAllPaths("posts").map(x => x.params.slug);
-  const posts = paths.map(pathArr => getMdFileData(pathArr)).filter(post => post)
+  const posts = getRecurseMdFileData("posts")
   return {
     props: {
       posts

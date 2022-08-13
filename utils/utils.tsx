@@ -49,3 +49,9 @@ export function getMdFileData(pathArr: string[]) {
     lastModified,
   }
 }
+
+export function getRecurseMdFileData(rootPath: string) {
+  return recurseAllPaths(rootPath)
+    .map(x => getMdFileData(x.params.slug))
+    .filter(post => post);
+}

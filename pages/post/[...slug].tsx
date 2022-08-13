@@ -1,7 +1,8 @@
 import md from 'markdown-it';
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { ParsedUrlQuery } from 'querystring'
-import { recurseAllPaths, getMdFile } from 'utils/utils';
+import { recurseAllPaths, getMdFile, getRecurseMdFileData } from 'utils/utils';
+import PostCard from 'components/postCard';
 
 interface IParams extends ParsedUrlQuery {
   slug: string[]
@@ -34,37 +35,37 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = (context) => {
   const { slug } = context.params as IParams;
+  const filePath = `posts/${slug.join("/")}`
 
-  if (slug[slug.length - 1].endsWith(".md")) {
-    const filePath = `posts/${slug.join("/")}`
+  if (filePath.endsWith(".md")) {
     const { data, content } = getMdFile(filePath);
     return {
       props: { slug, data, content }
     }
   }
-  
+
+  const posts = getRecurseMdFileData(filePath)
   return {
-    props: { slug }
+    props: { posts }
   }
 }
 
-export default function PostPage({ slug, data, content }: postData) {
-  return !data ? <>{slug.join("/")}</> : (
-    <>
-      <div
-        className='w-full h-[400px]'
-        style={{
-          background: `url(${data.coverImage}) center center`,
-          backgroundSize: 'cover'
-        }}
-      />
-      <div className="max-w-[1000px] mx-auto">
-        <div className='prose py-10 px-8 max-w-full shadow-2xl'>
-          <h1 className='text-[32px] mb-1 leading-9'>{data.title}</h1>
-          <small className='block mb-4 text-gray-400'>{data.date}</small>
-          <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
-        </div>
+export default function PostPage(post: postData | postDataArr) {
+  const { data, content } = post as unknown as postData;
+  return content ? <>
+    <div
+      className='w-full h-[400px]'
+      style={{
+        background: `url(${data.coverImage}) center center`,
+        backgroundSize: 'cover'
+      }}
+    />
+    <div className="max-w-[1000px] mx-auto">
+      <div className='prose py-10 px-8 max-w-full shadow-2xl'>
+        <h1 className='text-[32px] mb-1 leading-9'>{data.title}</h1>
+        <small className='block mb-4 text-gray-400'>{data.date}</small>
+        <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
       </div>
-    </>
-  );
+    </div>
+  </> : <PostCard postDataArr={(post as postDataArr).posts} isRoot={true} />
 }
