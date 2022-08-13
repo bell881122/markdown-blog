@@ -1,9 +1,21 @@
 import type { NextPage } from 'next'
+import { getRecurseMdFileData } from 'utils/utils';
+import { postDataArr } from 'pages/post/[...slug]';
+import PostCard from 'components/PostCard';
 
-const Home: NextPage = () => {
+export async function getStaticProps() {
+  const posts = getRecurseMdFileData("posts")
+  return {
+    props: {
+      posts
+    }
+  };
+}
+
+const Index: NextPage<postDataArr> = ({ posts }) => {
   return (
-    <h1 className="text-[32px]">Next.js!</h1>
+    <PostCard postDataArr={posts} />
   )
 }
 
-export default Home
+export default Index
