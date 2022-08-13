@@ -1,6 +1,7 @@
 import md from 'markdown-it';
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { ParsedUrlQuery } from 'querystring'
 import { recurseAllPaths, getMdFile, getRecurseMdFileData, checkIsMd, checkIsNotDraft } from 'utils/utils';
 import PostCard from 'components/PostCard';
@@ -63,6 +64,22 @@ export default function PostPage(post: postData | postDataArr) {
   const { slug, data, content, postPaths } = post as unknown as postData;
   const router = useRouter();
   const handleLink = (url: string) => router.push(url);
+
+  useEffect(() => {
+    var aScript = document.createElement('script');
+    aScript.type = 'text/javascript';
+    aScript.src = " https://js.stripe.com/v3/";
+    
+    document.head.appendChild(aScript);
+    aScript.onload = () => {
+      var links = document.querySelectorAll('a');
+      for (var i = 0, length = links.length; i < length; i++) {
+        if (links[i].hostname != window.location.hostname) {
+          links[i].target = '_blank';
+        }
+      }
+    };
+  }, [])
 
   return content ? <>
     <div className='md:flex flex-row-reverse'>
