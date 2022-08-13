@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { contextList } from 'config/config';
 import styles from './BaseLayout.module.scss';
@@ -8,8 +9,10 @@ type Props = {
 };
 
 const BaseLayout = ({ children }: Props) => {
+  const router = useRouter();
   const [showMenu, setShowMenu] = useState(false);
   const handleShowMenu = () => setShowMenu(state => !state);
+  const handleLink = (url: string) => router.push(`/post/${url}`);
 
   return (
     <div className='relative bg-gray-100 min-h-screen'>
@@ -18,11 +21,9 @@ const BaseLayout = ({ children }: Props) => {
           <div className='fixed top-0 left-0 w-full min-h-screen bg-[rgba(0,0,0,0.5)]' />
           <div className="fixed mt-10 w-full bg-gray-100">
             {contextList.map(item =>
-              <Link key={item} href={`post/${item}`} >
-                <div className="mx-4 p-2 border-b cursor-pointer hover:text-gray-800 text-gray-500">
-                  {item}
-                </div>
-              </Link>
+              <div key={item} onClick={() => handleLink(item)} className="mx-4 p-2 border-b cursor-pointer hover:text-gray-800 text-gray-500">
+                {item}
+              </div>
             )}
           </div>
         </div>
@@ -34,11 +35,9 @@ const BaseLayout = ({ children }: Props) => {
           </Link>
           <div className="hidden sm:flex">
             {contextList.map(item =>
-              <Link key={item} href={`post/${item}`} >
-                <span className="block ml-4 cursor-pointer text-gray-500">
-                  {item}
-                </span>
-              </Link>
+              <span key={item} onClick={() => handleLink(item)} className="block ml-4 cursor-pointer text-gray-500">
+                {item}
+              </span>
             )}
           </div>
           <div onClick={() => handleShowMenu()} className="sm:hidden w-6 py-[6px] cursor-pointer">
