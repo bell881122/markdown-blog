@@ -41,15 +41,15 @@ const PostCard = ({ postDataArr }: Props) => {
                   backgroundSize: 'cover'
                 }}
               />
-              <div className='p-4'>
-                <h1>{data.title}</h1>
-                <small className='block'>{data.date}</small>
+              <div className='p-4 h-[calc(100%-250px)] sm:h-[calc(100%-180px)] md:h-[calc(100%-150px)] lg:h-[calc(100%-100px)] flex flex-col'>
+                <h1 className='mb-auto font-bold'>{data.title}</h1>
+                <small className='block mt-2'>{data.date}</small>
                 <small className='block text-gray-400'>{`最後更新：${lastModified}`}</small>
-                <div className='flex flex-wrap'>
+                {/* <div className='flex flex-wrap'>
                   {data.tags && data.tags.length && data.tags.toString().split(',').map((tag, index) => (
                     <small key={index} className={`px-2 py-0 block mt-1.5 text-gray-400 border border-gray-400 rounded-[8px] ${index !== data.tags.length - 1 ? "mr-1" : ''}`}>{tag}</small>
                   ))}
-                </div>
+                </div> */}
               </div>
             </div>
           );
