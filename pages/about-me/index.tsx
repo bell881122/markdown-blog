@@ -36,7 +36,7 @@ const Index: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className='py-6 sm:py-10 px-4 sm:px-8 leading-relaxed text-[20px] text-center whitespace-pre-line'>
+      <div className='py-6 sm:py-10 px-4 sm:px-8 leading-relaxed text-[20px] text-center sm:text-left whitespace-pre-line'>
         <p>{
           `2 年全端 + 1 年前端。
 
