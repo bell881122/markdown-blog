@@ -16,23 +16,25 @@ const Index: NextPage = () => {
         </div>
         <div className='flex flex-col mt-4 font-bold'>
           <h1 className="mt-auto text-[40px] text-white">Emi Chang</h1>
-          <p className="mt-2 ml-1">Front-end Developer</p>
-        </div>
-        <div className="mt-6">
-          <div className="flex my-1">
-            <p className="my-auto mr-2"><FaMapMarkerAlt /></p>
-            <p>Taipei, Taiwan.</p>
-          </div>
-          <div className="flex my-1">
-            <p className="my-auto mr-2"><MdMail /></p>
-            <p>bell881122@gmail.com</p>
-          </div>
-          <div className="flex my-1">
-            <p className="my-auto mr-2"><BsGithub /></p>
-            <Link
-              txt="GitHub"
-              url="https://github.com/bell881122"
-            />
+          <p className="mt-2 ml-[2px]">Front-end Developer</p>
+          <div className="mt-6">
+            <div className="flex my-1">
+              <small className="my-auto mr-2"><FaMapMarkerAlt /></small>
+              <small>Taipei, Taiwan.</small>
+            </div>
+            <div className="flex my-1">
+              <small className="my-auto mr-2"><MdMail /></small>
+              <small>bell881122@gmail.com</small>
+            </div>
+            <div className="flex my-1">
+              <small className="my-auto mr-2"><BsGithub /></small>
+              <small>
+                <Link
+                  txt="GitHub"
+                  url="https://github.com/bell881122"
+                />
+              </small>
+            </div>
           </div>
         </div>
       </div>
