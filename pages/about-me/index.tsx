@@ -60,7 +60,7 @@ const Index: NextPage = () => {
             <li>Redux</li>
             <li>Next.js</li>
             <li>Node.js</li>
-            <li>express.js</li>
+            <li>Express.js</li>
             <li>webpack</li>
           </ul>
         </div>
