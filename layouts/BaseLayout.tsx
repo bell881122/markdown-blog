@@ -12,7 +12,7 @@ const BaseLayout = ({ children }: Props) => {
   const router = useRouter();
   const [showMenu, setShowMenu] = useState(false);
   const handleShowMenu = () => setShowMenu(state => !state);
-  const handleLink = (url: string) => router.push(`/post/${url}`);
+  const handleLink = (url: string) => router.push(url);
 
   return (
     <div className='relative bg-gray-100 min-h-screen'>
@@ -21,7 +21,7 @@ const BaseLayout = ({ children }: Props) => {
           <div className='fixed top-0 left-0 w-full min-h-screen bg-[rgba(0,0,0,0.5)]' />
           <div className="fixed mt-10 w-full bg-gray-100">
             {contextList.map(item =>
-              <div key={item} onClick={() => handleLink(item)} className="mx-4 p-2 border-b cursor-pointer hover:text-gray-800 text-gray-500">
+              <div key={item} onClick={() => handleLink(`/post/${item}`)} className="mx-4 p-2 border-b cursor-pointer hover:text-gray-800 text-gray-500">
                 {item}
               </div>
             )}
@@ -35,7 +35,7 @@ const BaseLayout = ({ children }: Props) => {
           </Link>
           <div className="hidden sm:flex">
             {contextList.map(item =>
-              <span key={item} onClick={() => handleLink(item)} className="block ml-4 cursor-pointer text-gray-500">
+              <span key={item} onClick={() => handleLink(`/post/${item}`)} className="block ml-4 cursor-pointer text-gray-500">
                 {item}
               </span>
             )}
@@ -49,8 +49,18 @@ const BaseLayout = ({ children }: Props) => {
         {children}
       </div>
       <div className="h-8 bg-cyan-700 w-full flex ">
-        <small className='my-auto px-4 max-w-[1000px] mx-auto text-gray-200 text-ellipsis overflow-hidden whitespace-nowrap'>
-          Copyright © Emi Chang {new Date().getFullYear()}
+        <small className='my-auto px-4 max-w-[1000px] mx-auto text-gray-300 text-ellipsis overflow-hidden whitespace-nowrap'>
+          <span
+            className='text-white font-bold mr-4 cursor-pointer'
+            onClick={() => handleLink("/about-me")}
+          >關於我</span>
+          <a
+            className='text-white font-bold mr-4'
+            href="https://github.com/bell881122"
+            target="_blank"
+            rel="noreferrer"
+          >Github</a>
+          Copyright © Emi {new Date().getFullYear()}
         </small>
       </div>
     </div >
