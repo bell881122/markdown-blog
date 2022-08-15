@@ -16,7 +16,7 @@ export default function Card({
   reverse,
 }: Props) {
   return (
-    <div className={`flex-none sm:flex my-10 leading-7${reverse ? " flex-row-reverse" : ""}`}>
+    <div className={`flex-none sm:flex my-8 leading-7${reverse ? " flex-row-reverse" : ""}`}>
       <div className="w-full sm:w-44 my-2 sm:mt-8">
         <h3 className="text-[22px] font-bold">{title}</h3>
         <small className="text-gray-400">{subTitle}</small>
