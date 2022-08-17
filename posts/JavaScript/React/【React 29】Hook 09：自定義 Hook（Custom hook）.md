@@ -2,7 +2,7 @@
 title: '【React 29】Hook 09：自定義 Hook（Custom hook）'
 date: '2021-10-15'
 tags: 'React.js,JavaScript'
-coverImage: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
+coverImage: ''
 ---
 
 ## 打造自己的 Hook
