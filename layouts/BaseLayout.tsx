@@ -17,7 +17,7 @@ const BaseLayout = ({ children }: Props) => {
         <div className="sm:hidden" onClick={() => handleShowMenu()}>
           <div className="fixed top-0 left-0 w-full min-h-screen bg-[rgba(0,0,0,0.5)]" />
           <div className="fixed mt-10 w-full bg-gray-100">
-            {contextList.map(item =>
+            {contextList.map(item => item === "common" ? null :
               <a key={item} href={`/post/${item}`} className="block mx-4 p-2 border-b cursor-pointer hover:text-gray-800 text-gray-500">
                 {item}
               </a>
@@ -33,7 +33,7 @@ const BaseLayout = ({ children }: Props) => {
             </a>
           </div>
           <div className="hidden sm:flex">
-            {contextList.map(item =>
+            {contextList.map(item => item === "common" ? null :
               <a key={item} href={`/post/${item}`}>
                 <span className="block ml-4 text-gray-500">
                   {item}
