@@ -23,7 +23,7 @@ export default function Card({
       </div>
       <div className={`w-full sm:w-[calc(100%-theme(space.48))] whitespace-pre-line${reverse ? " sm:mr-auto" : " sm:ml-auto"}`}>
         {imgUrl && <img className="w-full" src={imgUrl} alt={title} />}
-        {contentTitle && <p className='text-[20px] font-bold mt-4 mb-2'>{contentTitle}</p>}
+        {contentTitle && <p className="text-[20px] font-bold mt-4 mb-2">{contentTitle}</p>}
         {content}
       </div>
     </div>

@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { NextPage } from "next"
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsGithub } from "react-icons/bs";
 import { MdMail, } from "react-icons/md";
@@ -6,15 +6,15 @@ import Link from "components/Link";
 
 const Index: NextPage = () => {
   return (
-    <div className='my-6 mx-auto block sm:flex flex-wrap sm:flex-nowrap w-[90%] sm:w-auto'>
+    <div className="my-6 mx-auto block sm:flex flex-wrap sm:flex-nowrap w-[90%] sm:w-auto">
       <div
-        className='mx-auto sm:mx-0 py-10 px-8 w-min-[500px] sm:w-auto flex flex-col items-center rounded-lg bg-cyan-800 text-gray-300'
+        className="mx-auto sm:mx-0 py-10 px-8 w-min-[500px] sm:w-auto flex flex-col items-center rounded-lg bg-cyan-800 text-gray-300"
         style={{ boxShadow: "4px 4px 12px 3px rgba(0, 0, 0, 0.2)" }}
       >
         <div className="h-36 w-36">
           <img className="h-full w-full rounded-full object-center" src="https://i.imgur.com/cOCeXgk.png" alt="avatar" />
         </div>
-        <div className='flex flex-col mt-4 font-bold'>
+        <div className="flex flex-col mt-4 font-bold">
           <h1 className="mt-auto text-[40px] text-white">Emi Chang</h1>
           <p className="mt-2 ml-[2px]">Front-end Developer</p>
           <div className="mt-6">
@@ -38,7 +38,7 @@ const Index: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className='py-6 sm:py-10 px-4 sm:px-8 leading-relaxed text-[20px] text-center sm:text-left whitespace-pre-line'>
+      <div className="py-6 sm:py-10 px-4 sm:px-8 leading-relaxed text-[20px] text-center sm:text-left whitespace-pre-line">
         <p>{
           `2 年全端 + 1 年前端。
 

@@ -7,7 +7,7 @@
   &:after {
     position: absolute;
     width: 100%;
-    content: ' ';
+    content: " ";
     border-top: 1.5px solid rgb(107, 114, 128);
   }
 
@@ -32,7 +32,7 @@
   &:before,
   &:after {
     position: absolute;
-    content: ' ';
+    content: " ";
     height: 24px;
     width: 2px;
     background-color: rgb(107, 114, 128);

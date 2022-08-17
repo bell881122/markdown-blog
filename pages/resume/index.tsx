@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { NextPage } from "next"
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { MdMail, } from "react-icons/md";
@@ -10,13 +10,13 @@ import Link from "components/Link";
 
 const Index: NextPage = () => {
   return (
-    <div className='my-6 mx-2 sm:mx-4'>
+    <div className="my-6 mx-2 sm:mx-4">
       <div className="block md:flex" >
         <div className="block sm:flex">
           <div className="h-36 w-36 mr-4">
             <img className="h-full w-full object-center" src="https://i.imgur.com/M9PuQWb.png" alt="avatar" />
           </div>
-          <div className='flex flex-col mt-2 md:mt-0'>
+          <div className="flex flex-col mt-2 md:mt-0">
             <h1 className="mt-auto text-[40px]">張郁欣</h1>
             <h2 className="text-[20px] font-bold">Yu-hsin Chang</h2>
             <p className="mt-2">Front-end Developer</p>
@@ -52,9 +52,9 @@ const Index: NextPage = () => {
 
       <SectionTitle title="SKILL" />
       <div className="flex-none sm:flex mt-3 justify-between">
-        <div className='mb-6'>
-          <p className='font-bold text-[18px]'>Front-end / JS</p>
-          <ul className='list-disc ml-5'>
+        <div className="mb-6">
+          <p className="font-bold text-[18px]">Front-end / JS</p>
+          <ul className="list-disc ml-5">
             <li>JavaScript(ES6+)</li>
             <li>TypeScript</li>
             <li>React (hook {`&`} component)</li>
@@ -65,9 +65,9 @@ const Index: NextPage = () => {
             <li>webpack</li>
           </ul>
         </div>
-        <div className='mb-6 mx-0 sm:mx-5'>
-          <p className='font-bold text-[18px]'>Layout</p>
-          <ul className='list-disc ml-5'>
+        <div className="mb-6 mx-0 sm:mx-5">
+          <p className="font-bold text-[18px]">Layout</p>
+          <ul className="list-disc ml-5">
             <li>Material-UI</li>
             <li>Bootstrap</li>
             <li>TailwindCSS</li>
@@ -76,9 +76,9 @@ const Index: NextPage = () => {
             <li>Storybook</li>
           </ul>
         </div>
-        <div className='mb-6'>
-          <p className='font-bold text-[18px]'>Back-End / Other</p>
-          <ul className='list-disc ml-5'>
+        <div className="mb-6">
+          <p className="font-bold text-[18px]">Back-End / Other</p>
+          <ul className="list-disc ml-5">
             <li>Git(GitHub / GitLab)</li>
             <li>RESTful API</li>
             <li>MongoDB</li>
@@ -108,7 +108,7 @@ const Index: NextPage = () => {
           <p>・Axios</p>
           <p>・TailwindCSS</p>
 
-          <p className='mt-4'><b>後端技術</b></p>
+          <p className="mt-4"><b>後端技術</b></p>
           <p>・Express.js</p>
           <p>・MongoDB/Mongoose</p>
           <p>・Imgur API</p>
@@ -117,23 +117,23 @@ const Index: NextPage = () => {
           <p>・WebSocket（聊天室）</p>
           <p>・JsonWebToken（註冊登入）</p>
 
-          <p className='mt-4'>
+          <p className="mt-4">
             <Link
               txt="MetaWall (Demo)"
               url="https://metawall-dusky.vercel.app/"
             />
           </p>
-          <p><small className='block h-4 font-bold'>體驗帳密</small></p>
-          <p><small className='block h-4'>帳號：test@gmail.com</small></p>
-          <p><small className='block h-4'>密碼：1234qwer</small></p>
-          <div className='mt-6'>
+          <p><small className="block h-4 font-bold">體驗帳密</small></p>
+          <p><small className="block h-4">帳號：test@gmail.com</small></p>
+          <p><small className="block h-4">密碼：1234qwer</small></p>
+          <div className="mt-6">
             {[
-              { txt: '前端 Github', url: 'https://github.com/ayugioh2003/metawall' },
-              { txt: '後端 Github', url: 'https://github.com/ayugioh2003/metawallBackend' },
-              { txt: '共筆文件', url: 'https://hackmd.io/@ayugioh2003/HyI-c-Gf9/%2FQH2BCKRVS5aCN9EFnUeGsw' },
-              { txt: '簡報 PPT', url: 'https://docs.google.com/presentation/d/16gBUbxeFbYuLoI1Pta_NekDQ22DGRXCV5SF_6RyiIII/edit#slide=id.g133c16ca88c_4_0' },
+              { txt: "前端 Github", url: "https://github.com/ayugioh2003/metawall" },
+              { txt: "後端 Github", url: "https://github.com/ayugioh2003/metawallBackend" },
+              { txt: "共筆文件", url: "https://hackmd.io/@ayugioh2003/HyI-c-Gf9/%2FQH2BCKRVS5aCN9EFnUeGsw" },
+              { txt: "簡報 PPT", url: "https://docs.google.com/presentation/d/16gBUbxeFbYuLoI1Pta_NekDQ22DGRXCV5SF_6RyiIII/edit#slide=id.g133c16ca88c_4_0" },
             ].map(item =>
-              <div key={item.txt} className='mr-4'>
+              <div key={item.txt} className="mr-4">
                 <Link
                   txt={item.txt}
                   url={item.url}
@@ -160,7 +160,7 @@ const Index: NextPage = () => {
             100% 客製化的選擇！`
           }</p>
 
-          <p className='mt-4'><b>前端技術</b></p>
+          <p className="mt-4"><b>前端技術</b></p>
           <p>・React.js</p>
           <p>・Next.js</p>
           <p>・Typescript</p>
@@ -168,15 +168,15 @@ const Index: NextPage = () => {
           <p>・gray-matter</p>
           <p>・Markdown-it</p>
 
-          <p className='mt-4'><b>其他</b></p>
+          <p className="mt-4"><b>其他</b></p>
           <p>・Vercel (CI/CD)</p>
 
-          <p className='mt-4'><b>後續開發規劃</b></p>
+          <p className="mt-4"><b>後續開發規劃</b></p>
           <p>・網站效能優化</p>
           <p>・SEO 優化</p>
           <p>・新增站內搜尋</p>
 
-          <p className='mt-4'>
+          <p className="mt-4">
             <Link
               txt="Markdown Blog"
               url="https://www.xiaoxiao.blog/"
@@ -205,7 +205,7 @@ const Index: NextPage = () => {
               ・Material-UI (RWD)
               ・Moment.js`}
           </p>
-          <p className='mt-4'>
+          <p className="mt-4">
             <Link
               txt="Simple Life (Demo)"
               url="https://www.simplelife.site/"
@@ -251,7 +251,7 @@ const Index: NextPage = () => {
         content={
           <CardContentList lists={[
             {
-              title: '【主要使用技能】', contentList: [
+              title: "【主要使用技能】", contentList: [
                 "・React ( hook & class )",
                 "・Redux",
                 "・Next.js",
@@ -275,7 +275,7 @@ const Index: NextPage = () => {
               ]
             },
             {
-              title: '紅獅集團 2022 新版交易網站', contentList: [
+              title: "紅獅集團 2022 新版交易網站", contentList: [
                 "・協助開發初版網站（完成 40% 以上需求&功能）",
                 "・協助重構舊版網站功能",
                 "　。Mui v4 → v5",
@@ -294,14 +294,14 @@ const Index: NextPage = () => {
               ]
             },
             {
-              title: '紅獅集團交易網站（~2021）', contentList: [
+              title: "紅獅集團交易網站（~2021）", contentList: [
                 "・網站維護、除錯、開發新需求主要負責人",
                 "・友站導流註冊功能開發",
                 "・網站 SEO 優化",
               ]
             },
             {
-              title: '紅獅集團後台管理系統（~2022）', contentList: [
+              title: "紅獅集團後台管理系統（~2022）", contentList: [
                 "・網站維護、除錯、開發新需求主要負責人",
               ]
             },
@@ -316,7 +316,7 @@ const Index: NextPage = () => {
         content={
           <CardContentList lists={[
             {
-              title: '高雄師範大學公文系統管理系統主要負責人', contentList: [
+              title: "高雄師範大學公文系統管理系統主要負責人", contentList: [
                 "・開發系統、維護介面、架設站台、建置維護資料庫",
                 "・處理舊版系統資料轉至新系統",
                 "・上線後每月完成 20+ 需求數",
@@ -324,7 +324,7 @@ const Index: NextPage = () => {
               ]
             },
             {
-              title: '獨立開發、上線、維護教育部青年署HTML版公文系統', contentList: [
+              title: "獨立開發、上線、維護教育部青年署HTML版公文系統", contentList: [
                 "・開發系統、維護介面、架設站台、建置維護資料庫",
                 "・舊版本系統資料轉檔",
                 "・參與客戶需求訪談，第一線了解客戶需求",
@@ -333,7 +333,7 @@ const Index: NextPage = () => {
               ]
             },
             {
-              title: '參與團隊開發、上線、維護台大醫院公文系統', contentList: [
+              title: "參與團隊開發、上線、維護台大醫院公文系統", contentList: [
                 "・專案 2021 年 1 月上線後至今穩定運作",
                 "・參與開發每月完成 30+ 需求數",
                 "・協助維護並驗收完成",
@@ -342,7 +342,7 @@ const Index: NextPage = () => {
               ]
             },
             {
-              title: '協助維護多家組織公文系統', contentList: [
+              title: "協助維護多家組織公文系統", contentList: [
                 "・台灣自來水公司",
                 "・世新大學",
                 "・交通部觀光局",
@@ -359,18 +359,18 @@ const Index: NextPage = () => {
         content={
           <CardContentList lists={[
             {
-              title: '冰河森林數位科技', contentList: [
+              title: "冰河森林數位科技", contentList: [
                 "〈Barocco Nuts〉品牌網頁設計、維護",
                 "〈Playwoods〉品牌 EDM 企劃、設計排版",
               ]
             },
             {
-              title: '大風文創出版', contentList: [
+              title: "大風文創出版", contentList: [
                 "大風／繪虹／愛手作書系文宣品設計",
               ]
             },
             {
-              title: '國立政治大學', contentList: [
+              title: "國立政治大學", contentList: [
                 "《竹南鎮誌》封面設計、內頁插圖、圖表繪製",
                 "《台灣原住民族部落事典》設計風格、內頁版型規劃",
               ]
