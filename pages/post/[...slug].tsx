@@ -62,20 +62,25 @@ export const getStaticProps: GetStaticProps = (context) => {
 export default function PostPage(post: postData | postDataArr) {
   const { slug, data, content, postPaths } = post as unknown as postData;
 
+  // 外部連結改為開啟新視窗
   useEffect(() => {
-    var aScript = document.createElement("script");
-    aScript.type = "text/javascript";
-    aScript.src = " https://js.stripe.com/v3/";
-    
-    document.head.appendChild(aScript);
-    aScript.onload = () => {
-      var links = document.querySelectorAll("a");
-      for (var i = 0, length = links.length; i < length; i++) {
-        if (links[i].hostname != window.location.hostname) {
-          links[i].target = "_blank";
+    const stripeExist = document.getElementById("stripe")
+    if (!stripeExist) {
+      const aScript = document.createElement("script");
+      aScript.id = "stripe";
+      aScript.type = "text/javascript";
+      aScript.src = " https://js.stripe.com/v3/";
+
+      document.head.appendChild(aScript);
+      aScript.onload = () => {
+        var links = document.querySelectorAll("a");
+        for (var i = 0, length = links.length; i < length; i++) {
+          if (links[i].hostname != window.location.hostname) {
+            links[i].target = "_blank";
+          }
         }
-      }
-    };
+      };
+    }
   }, [])
 
   return content ? <>
