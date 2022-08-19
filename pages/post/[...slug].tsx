@@ -1,6 +1,5 @@
 import md from "markdown-it";
 import { GetStaticPaths, GetStaticProps } from "next"
-import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { ParsedUrlQuery } from "querystring"
 import { recurseAllPaths, getMdFile, getRecurseMdFileData, checkIsMd, checkIsNotDraft } from "utils/utils";
@@ -62,8 +61,6 @@ export const getStaticProps: GetStaticProps = (context) => {
 
 export default function PostPage(post: postData | postDataArr) {
   const { slug, data, content, postPaths } = post as unknown as postData;
-  const router = useRouter();
-  const handleLink = (url: string) => router.push(url);
 
   useEffect(() => {
     var aScript = document.createElement("script");
@@ -106,12 +103,11 @@ export default function PostPage(post: postData | postDataArr) {
             const title = item[item.length - 1].replace(".md", "");
             const isCurrentPost = url === slug.join("/");
             return (
-              <li
-                key={url}
-                onClick={() => isCurrentPost ? null : handleLink(url)}
-                className={`${isCurrentPost ? "" : "text-cyan-600 cursor-pointer"} my-1 text-ellipsis overflow-hidden whitespace-nowrap`}
-              >
-                <small>{title}</small>
+              <li key={url} className="my-1 flex">
+                <a
+                  href={isCurrentPost ? undefined : `/post/${url}`}
+                  className={`${isCurrentPost ? "" : "text-cyan-600"} text-ellipsis overflow-hidden whitespace-nowrap`}
+                ><small>{title}</small></a>
               </li>
             )
           })}

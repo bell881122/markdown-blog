@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { postData } from "pages/post/[...slug]";
 import { useState, useEffect } from "react";
 
@@ -7,8 +6,6 @@ type Props = {
 }
 
 const PostCard = ({ postDataArr }: Props) => {
-  const router = useRouter();
-  const handleLink = (url: string) => router.push(`/post/${url}`);
   const [posts, setPosts] = useState(postDataArr);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(0);
@@ -29,9 +26,9 @@ const PostCard = ({ postDataArr }: Props) => {
           const { slug, data, lastModified } = post
           const url = slug.join("/");
           return !data ? null : (
-            <div
+            <a
               key={url}
-              onClick={() => handleLink(url)}
+              href={`/post/${url}`}
               className="border border-gray-200 m-2 rounded-xl shadow-xl overflow-hidden cursor-pointer"
             >
               <div
@@ -51,7 +48,7 @@ const PostCard = ({ postDataArr }: Props) => {
                   ))}
                 </div> */}
               </div>
-            </div>
+            </a>
           );
         })}
       </div>
