@@ -2,8 +2,9 @@ import md from "markdown-it";
 import { GetStaticPaths, GetStaticProps } from "next"
 import { useEffect } from "react";
 import { ParsedUrlQuery } from "querystring"
-import { recurseAllPaths, getMdFile, getRecurseMdFileData, checkIsMd, checkIsNotDraft } from "utils/utils";
+import { getAllPaths, getMdFile, getRecurseMdFileData, checkIsMd, checkIsNotDraft } from "utils/utils";
 import PostCard from "components/PostCard";
+import ArrowIcon from "components/ArrowIcon";
 
 interface IParams extends ParsedUrlQuery {
   slug: string[]
@@ -28,7 +29,7 @@ export type postDataArr = {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = recurseAllPaths("posts");
+  const paths = getAllPaths("posts");
   return {
     paths,
     fallback: false,
@@ -42,11 +43,11 @@ export const getStaticProps: GetStaticProps = (context) => {
   if (checkIsMd(filePath)) {
     const { data, content } = getMdFile(filePath);
     const rootPath = slug.slice(0, slug.length - 1).join("/");
-    const postPaths = recurseAllPaths(`posts/${rootPath}`)
+    const postPaths = getAllPaths(`posts/${rootPath}`, false)
       .map(postPath => postPath.params.slug)
       .filter(postPath => {
         const path = postPath.join("/")
-        return checkIsMd(path) && checkIsNotDraft(`posts/${path}`)
+        return !checkIsMd(path) || checkIsMd(path) && checkIsNotDraft(`posts/${path}`)
       })
     return {
       props: { slug, data, content, postPaths }
@@ -101,18 +102,28 @@ export default function PostPage(post: postData | postDataArr) {
           </div>
         </div>
       </div>
-      <div className="mr-0 md:mr-6 overflow-y-auto md:mt-0 md:w-32 md:hover:w-64 transition-[width] ease-in-out">
-        <ul className="mt-8 md:mt-2">
+      <div className="mr-0 md:mr-5 overflow-y-auto md:mt-0 md:w-32 md:hover:w-64 transition-[width] ease-in-out">
+        <ul className="mt-8 md:mt-3">
           {postPaths!.map(item => {
             const url = item.join("/");
+            const isFolder = item[item.length - 1].indexOf(".md") < 0;
             const title = item[item.length - 1].replace(".md", "");
             const isCurrentPost = url === slug.join("/");
             return (
-              <li key={url} className="my-1 flex">
+              <li key={url} className={`flex ${isFolder ? "p-1" : "my-1"}`}>
                 <a
                   href={isCurrentPost ? undefined : `/post/${url}`}
-                  className={`${isCurrentPost ? "" : "text-cyan-600"} text-ellipsis overflow-hidden whitespace-nowrap`}
-                ><small>{title}</small></a>
+                  className={`${isCurrentPost ? "" : "text-cyan-600"} ${isFolder ? "w-full flex items-center font-bold" : ""} text-ellipsis overflow-hidden whitespace-nowrap`}
+                >
+                  <small className={`${isFolder ? "text-[14px]" : ""}`}>
+                    {title}
+                  </small>
+                  {isFolder &&
+                    <span className="ml-auto mr-[2px]">
+                      <ArrowIcon style="border-cyan-600" />
+                    </span>
+                  }
+                </a>
               </li>
             )
           })}

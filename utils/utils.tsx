@@ -1,6 +1,6 @@
 import fs from 'fs';
 import matter from 'gray-matter';
-import { contextList, defaultImage } from 'config/config';
+import { defaultImage } from 'config/config';
 
 type pathsArr = {
   params: {
@@ -8,14 +8,17 @@ type pathsArr = {
   };
 }[];
 
-export function recurseAllPaths(path: string): pathsArr {
+export function getAllPaths(path: string, recurse: boolean = true): pathsArr {
   const files = fs.readdirSync(path, { withFileTypes: true });
   return files.flatMap(file => {
-    if (checkIsMd(file.name)) {
-      return getFilePath(path, file)
-    } else {
-      const currentPath = getFilePath(path, file)
-      return [currentPath, ...recurseAllPaths(`${path}/${file.name}`)]
+    if (!recurse) return getFilePath(path, file);
+    else {
+      if (checkIsMd(file.name)) {
+        return getFilePath(path, file)
+      } else {
+        const currentPath = getFilePath(path, file)
+        return [currentPath, ...getAllPaths(`${path}/${file.name}`)]
+      }
     }
   })
 }
@@ -57,7 +60,7 @@ export function getMdFileData(pathArr: string[]) {
 }
 
 export function getRecurseMdFileData(rootPath: string) {
-  return recurseAllPaths(rootPath)
+  return getAllPaths(rootPath)
     .map(x => getMdFileData(x.params.slug))
     .filter(post => post);
 }
