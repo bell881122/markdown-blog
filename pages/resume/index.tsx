@@ -84,7 +84,7 @@ const Index: NextPage = () => {
             <li>MongoDB</li>
             <li>Firebase</li>
             <li>Nginx</li>
-            <li>CI/CD(Drone, Vercel)</li>
+            <li>CI/CD (Drone, Vercel, Jenkins)</li>
             <li>.Net(C#)</li>
             <li>SQL</li>
           </ul>
