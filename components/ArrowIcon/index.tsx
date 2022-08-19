@@ -1,13 +1,14 @@
 import styles from "./index.module.scss";
 
 type Props = {
-  style?: string;
+  wrapperClass?: string;
+  innerClass?: string;
 }
 
-export default function ArrowIcon({ style }: Props) {
+export default function ArrowIcon({ wrapperClass, innerClass }: Props) {
   return (
-    <span className={`flex items-center`}>
-      <i className={`${styles.arrow} ${style ? style : "border-gray-400"}`} />
+    <span className={`flex items-center ${wrapperClass ? wrapperClass : ""}`}>
+      <i className={`${styles.arrow} ${innerClass ? innerClass : "border-gray-400"}`} />
     </span>
   )
 }

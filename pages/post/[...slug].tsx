@@ -5,6 +5,7 @@ import { ParsedUrlQuery } from "querystring"
 import { getAllPaths, getMdFile, getRecurseMdFileData, checkIsMd, checkIsNotDraft } from "utils/utils";
 import PostCard from "components/PostCard";
 import ArrowIcon from "components/ArrowIcon";
+import Breadcrumbs from "components/Breadcrumbs";
 
 interface IParams extends ParsedUrlQuery {
   slug: string[]
@@ -95,9 +96,10 @@ export default function PostPage(post: postData | postDataArr) {
           }}
         />
         <div className="max-w-[1000px] mx-auto">
-          <div className="prose py-10 px-8 max-w-full shadow-2xl">
-            <h1 className="text-[32px] mb-1 leading-9">{data.title}</h1>
-            <small className="block mb-4 text-gray-400">{data.date}</small>
+          <div className="prose pt-4 pb-8 px-8 max-w-full shadow-2xl">
+            <Breadcrumbs slug={slug} />
+            <h1 className="text-[28px] sm:text-[34px] mt-6 mb-1 ml-[-3px] leading-normal">{data.title}</h1>
+            <small className="block mb-6 text-gray-400">{data.date}</small>
             <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
           </div>
         </div>
@@ -120,7 +122,7 @@ export default function PostPage(post: postData | postDataArr) {
                   </small>
                   {isFolder &&
                     <span className="ml-auto mr-[2px]">
-                      <ArrowIcon style="border-cyan-600" />
+                      <ArrowIcon innerClass="border-cyan-600" />
                     </span>
                   }
                 </a>
