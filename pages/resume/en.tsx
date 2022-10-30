@@ -225,7 +225,7 @@ const Index: NextPage = () => {
       <Divider lighter />
       <Card
         reverse
-        title="Our bookcase"
+        title="Our bookcases"
         subTitle="coming soon..."
         imgUrl="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
         contentTitle="Share books in our bookcases"
@@ -311,7 +311,7 @@ const Index: NextPage = () => {
       />
       <Divider lighter />
       <Card
-        title="A.T.INFORMATION SYSTEMS"
+        title="A.T.Information Systems"
         subTitle="2019.08 - 2021.07"
         contentTitle="Full Stack Developer"
         content={
@@ -395,7 +395,7 @@ const Index: NextPage = () => {
       <SectionTitle title="EDUCATION" />
       <Card
         title="National Taiwan University of Science and Technology"
-        subTitle="Taipei, taiwan."
+        subTitle="Taipei, Taiwan."
         contentTitle="Department of Commercial Design"
         content={<>
           <p>2010 Annual Campus Makeup Contest</p>
