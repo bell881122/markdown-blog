@@ -17,7 +17,7 @@ export const defaultImage = {
     // https://unsplash.com/photos/EhTcC9sYXsw
     default: "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
   },
-  Develop: {
+  Dev: {
     // https://unsplash.com/photos/DtDlVpy-vvQ
     default: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80",
   },
